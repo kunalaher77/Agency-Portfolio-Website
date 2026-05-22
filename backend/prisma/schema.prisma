@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Page {
+  id          Int      @id @default(autoincrement())
+  title       String
+  slug        String   @unique
+  menuItems   MenuItem[]
+  content     String?
+  isPublished Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Menu {
+  id        Int        @id @default(autoincrement())
+  name      String
+  location  String?    // header, footer, sidebar
+
+  items     MenuItem[]
+
+  createdAt DateTime   @default(now())
+}
+
+model MenuItem {
+  id        Int      @id @default(autoincrement())
+
+  title     String
+  url       String?
+
+  order     Int      @default(0)
+
+  menuId     Int
+  menu       Menu     @relation(fields: [menuId], references: [id])
+
+  pageId     Int?
+  page       Page?    @relation(fields: [pageId], references: [id])
+
+  parentId   Int?
+  parent     MenuItem? @relation("MenuItemChildren", fields: [parentId], references: [id])
+
+  children   MenuItem[] @relation("MenuItemChildren")
+
+  createdAt DateTime @default(now())
+}

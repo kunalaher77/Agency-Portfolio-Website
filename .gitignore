@@ -1,58 +1,84 @@
-# compiled output
-/dist
-/node_modules
-/build
+# =========================
+# Dependencies
+# =========================
+node_modules/
+**/node_modules/
 
+# =========================
+# Build outputs
+# =========================
+dist/
+build/
+out/
+
+# =========================
 # Logs
-logs
+# =========================
+logs/
 *.log
 npm-debug.log*
-pnpm-debug.log*
 yarn-debug.log*
-yarn-error.log*
+pnpm-debug.log*
 lerna-debug.log*
 
-# OS
+# =========================
+# Environment variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# OS files
+# =========================
 .DS_Store
+Thumbs.db
 
-# Tests
-/coverage
-/.nyc_output
+# =========================
+# Coverage / tests
+# =========================
+coverage/
+.nyc_output/
 
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# IDE - VSCode
+# =========================
+# IDE / Editors
+# =========================
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# dotenv environment variable files
-.env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
+.idea/
+*.sublime-workspace
 
-# temp directory
-.temp
-.tmp
+# =========================
+# Temporary files
+# =========================
+.tmp/
+.temp/
 
+# =========================
 # Runtime data
-pids
+# =========================
+pids/
 *.pid
 *.seed
 *.pid.lock
 
-# Diagnostic reports (https://nodejs.org/api/report.html)
-report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+# =========================
+# Node reports
+# =========================
+report.*.json
 
-/generated/prisma
+# =========================
+# Prisma (if needed)
+# =========================
+generated/prisma/
+
+# =========================
+# Optional: framework builds
+# =========================
+.next/
+.nuxt/
+.svelte-kit/
